@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 # MySQL configurations
 app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'sachin123'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'xxxxxx'
 app.config['MYSQL_DATABASE_DB'] = 'BucketList'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql.init_app(app)
@@ -39,6 +39,7 @@ def signUp():
             print("name2 not null", _name)
             _hashed_password = generate_password_hash(_password)
             #cursor.callproc('sp_createUser2',(_name,_email,'pass123'))
+            # --you have to change length of password parameter for sp_createUser2 from 45 to 200
             print("password",_hashed_password)
             cursor.callproc('sp_createUser2',(_name,_email,_hashed_password))
             data = cursor.fetchall()
